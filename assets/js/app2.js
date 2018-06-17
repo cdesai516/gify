@@ -2,10 +2,6 @@
 
 $(document).ready(function() {
 
-  $('#particle-button').click(function(){
-    particlesJS.load('particle-js',"assets\particles.js\particles.json")
-});
-
 var count_particles, stats, update;
 stats = new Stats;
 stats.setMode(0);

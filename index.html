@@ -11,8 +11,8 @@
 <!--Import materialize.css-->
 <link rel="stylesheet" type="text/css" href="assets\css\style.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     
     <title>GIFY ART</title>
 </head>
@@ -51,11 +51,27 @@
 </div>
 <script type="text/javascript" src = "assets\js\particles.js"></script>
 <script type="text/javascript"  src="assets\js\app.js"></script>
-<script type="text/javascript"  src="assets\particles.js\demo\js\lib\stats.js"></script>
+<script type="text/javascript"  src="assets\js\stats.js"></script>
 <script type="text/javascript"  src="assets\js\app2.js"></script>
 
 <script>
-
+var count_particles, stats, update;
+stats = new Stats;
+stats.setMode(0);
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.left = '0px';
+stats.domElement.style.top = '0px';
+document.body.appendChild(stats.domElement);
+count_particles = document.querySelector('.js-count-particles');
+update = function() {
+  stats.begin();
+  stats.end();
+  if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+    count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+  }
+  requestAnimationFrame(update);
+};
+requestAnimationFrame(update);
 
 </script>
 
