@@ -20,10 +20,10 @@ var pJS = function(tag_id, params){
     },
     particles: {
       number: {
-        value: 400,
+        value: 1000,
         density: {
           enable: true,
-          value_area: 800
+          value_area: 1800
         }
       },
       color: {
@@ -55,11 +55,11 @@ var pJS = function(tag_id, params){
         }
       },
       size: {
-        value: 20,
+        value: 200,
         random: false,
         anim: {
           enable: false,
-          speed: 20,
+          speed: 200,
           size_min: 0,
           sync: false
         }

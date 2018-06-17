@@ -1,9 +1,33 @@
 
 
 $(document).ready(function() {
-const gifyArry = ["fintech","digibyte","etherum","trading","blockchain","space","science","economics","bitcoin"]
 
-  
+  $('#particle-button').click(function(){
+    particlesJS.load('particle-js',"assets\particles.js\particles.json")
+});
+
+var count_particles, stats, update;
+stats = new Stats;
+stats.setMode(0);
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.left = '0px';
+stats.domElement.style.top = '0px';
+document.body.appendChild(stats.domElement);
+count_particles = document.querySelector('.js-count-particles');
+update = function() {
+  stats.begin();
+  stats.end();
+  if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+    count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+  }
+  requestAnimationFrame(update);
+};
+requestAnimationFrame(update);
+
+
+
+
+const gifyArry = ["fintech","digibyte","etherum","trading","blockchain","space","science","economics","bitcoin"]
 
     //button creation for each item 
     gifyArry.forEach(function(itemName){
@@ -53,6 +77,7 @@ const gifyArry = ["fintech","digibyte","etherum","trading","blockchain","space",
               // Creating and storing a div tag
               var gifyDiv = $("<div>");
               gifyDiv.addClass("gif")
+              gifyDiv.attr("id",'particles-js')
 
               // Creating a paragraph tag with the result item's rating
               var p = $("<p>").text("Rating: " + results[i].rating);
@@ -75,14 +100,15 @@ const gifyArry = ["fintech","digibyte","etherum","trading","blockchain","space",
     });
   });
 
-  $("img").on("click", function() {
-    console.log(hello);
+  $(document).on("click","img",function() {
+ 
+    console.log("hello");
     // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
     var state = $(this).attr("data-state");
     // If the clicked image's state is still, update its src attribute to what its data-animate value is.
     // Then, set the image's data-state to animate
     // Else set src to the data-still value
-    if (state === 'still') {
+    if (state == 'still') {
       $(this).attr("src", $(this).attr("data-animate"));
       $(this).attr("data-state", "animate");
     } else {
